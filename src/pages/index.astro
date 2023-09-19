@@ -188,7 +188,7 @@ const options: ISourceOptions = {
     window.location.href = 'https:\/\/superposition.bomberfish.ca/?url='+document.getElementById('urlfield').value;
     "> -->
       <input type="text" name="url" id="urlfield" placeholder="Enter a URL" onfocus="document.getElementById('tsparticles').classList.add('blurred');console.log('blurred')" onblur="document.getElementById('tsparticles').classList.remove('blurred');console.log('unblurred')" />
-      <button  id="gobutton" name="go" onclick="window.location.href = 'https:\/\/superposition.bomberfish.ca/?url='+document.getElementById('urlfield').value;">
+      <button id="gobutton" name="go" onclick="redirect(document.getElementById('urlfield').value);">
         <!-- fuck you apple i can do whatever i want with this icon and you can't do shit -->
         <!--?xml version="1.0" encoding="UTF-8"?-->
         <!--Generator: Apple Native CoreSVG 175.5-->
@@ -211,6 +211,7 @@ const options: ISourceOptions = {
         </svg>
       </button>
     <!-- </form> -->
+    <small>URLs must start with http:// or https://</small>
   </main>
   <span id="particles">
   <Particles
@@ -228,6 +229,13 @@ const options: ISourceOptions = {
   #tsparticles > canvas {
     z-index: -1000 !important;
     backdrop-filter: brightness(0.5);
+  }
+
+  small {
+    display:block;
+    font-size: 0.9rem;
+    margin-block: 0.4rem;
+    color: #eecfdf
   }
 
   #tsparticles, #tsparticles.blurred {
