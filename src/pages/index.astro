@@ -184,11 +184,11 @@ const options: ISourceOptions = {
     <h5>
       A <a href="https://bomberfish.ca">BomberFish Industries</a> project.
     </h5>
-    <form onsubmit="
-    redirect()
-    ">
+    <!-- <form onsubmit="
+    window.location.href = 'https:\/\/superposition.bomberfish.ca/?url='+document.getElementById('urlfield').value;
+    "> -->
       <input type="text" name="url" id="urlfield" placeholder="Enter a URL" onfocus="document.getElementById('tsparticles').classList.add('blurred');console.log('blurred')" onblur="document.getElementById('tsparticles').classList.remove('blurred');console.log('unblurred')" />
-      <button type="submit" id="gobutton" name="go">
+      <button  id="gobutton" name="go" onclick="window.location.href = 'https:\/\/superposition.bomberfish.ca/?url='+document.getElementById('urlfield').value;">
         <!-- fuck you apple i can do whatever i want with this icon and you can't do shit -->
         <!--?xml version="1.0" encoding="UTF-8"?-->
         <!--Generator: Apple Native CoreSVG 175.5-->
@@ -210,7 +210,7 @@ const options: ISourceOptions = {
           </g>
         </svg>
       </button>
-    </form>
+    <!-- </form> -->
   </main>
   <span id="particles">
   <Particles
