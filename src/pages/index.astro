@@ -24,7 +24,7 @@ const options: ISourceOptions = {
     shape: {
       type: "circle",
       stroke: {
-        width: 0,
+        width: 3,
         color: "#997788",
       },
     },
@@ -53,7 +53,7 @@ const options: ISourceOptions = {
       distance: 150,
       color: "#ffffff",
       opacity: 0.3,
-      width: 1,
+      width: 2,
     },
     move: {
       enable: true,
@@ -170,6 +170,10 @@ const options: ISourceOptions = {
    function onReady() {
      if (document.readyState == "complete") {
        document.getElementById("tsparticles")?.setAttribute("data-astro-cid-j7pv25f6", "")
+       document.getElementById("urlfield").style.paddingRight = "17rem";
+       document.getElementById("urlfield").style.opacity = "1";
+      //  document.getElementById("tsparticles").style.transform = "scale(1)"
+      //  document.getElementById("tsparticles").style.opacity = "1"
      }
    }
   
@@ -179,6 +183,7 @@ const options: ISourceOptions = {
 
 <Layout title="Superposition">
   <main>
+    <img src="/superposition.svg" width="210px" height="144px" style="margin-top: 1.85rem; margin-bottom: -1.25rem;"/>
     <h1><code>Superposition</code></h1>
     <h3>Proof-of-concept proxy using Cloudflare Workers.</h3>
     <h5>
@@ -187,28 +192,14 @@ const options: ISourceOptions = {
     <!-- <form onsubmit="
     window.location.href = 'https:\/\/superposition.bomberfish.ca/?url='+document.getElementById('urlfield').value;
     "> -->
-      <input type="text" name="url" id="urlfield" placeholder="Enter a URL" onfocus="document.getElementById('tsparticles').classList.add('blurred');console.log('blurred')" onblur="document.getElementById('tsparticles').classList.remove('blurred');console.log('unblurred')" />
+      <input type="text" name="url" id="urlfield" placeholder="Enter a URL..." onfocus="document.getElementById('tsparticles').classList.add('blurred');console.log('blurred')" onblur="document.getElementById('tsparticles').classList.remove('blurred');console.log('unblurred')" />
       <button id="gobutton" name="go" onclick="redirect(document.getElementById('urlfield').value);">
-        <!-- fuck you apple i can do whatever i want with this icon and you can't do shit -->
-        <!--?xml version="1.0" encoding="UTF-8"?-->
-        <!--Generator: Apple Native CoreSVG 175.5-->
-
-        <svg
-          version="1.1"
-          xmlns="http://www.w3.org/2000/svg"
-          xmlns:xlink="http://www.w3.org/1999/xlink"
-          width="16.3672"
-          height="17.1172"
-        >
-          <g>
-            <rect height="17.1172" opacity="0" width="16.3672" x="0" y="0"
-            ></rect>
-            <path
-              d="M9.78125 17.1172C10.3438 17.1172 10.7422 16.6328 11.0312 15.8828L16.1484 2.51562C16.2891 2.15625 16.3672 1.83594 16.3672 1.57031C16.3672 1.0625 16.0547 0.75 15.5469 0.75C15.2812 0.75 14.9609 0.828125 14.6016 0.96875L1.16406 6.11719C0.507812 6.36719 0 6.76562 0 7.33594C0 8.05469 0.546875 8.29688 1.29688 8.52344L5.51562 9.80469C6.01562 9.96094 6.29688 9.94531 6.63281 9.63281L15.2031 1.625C15.3047 1.53125 15.4219 1.54688 15.5 1.61719C15.5781 1.69531 15.5859 1.8125 15.4922 1.91406L7.51562 10.5156C7.21094 10.8359 7.1875 11.1016 7.33594 11.625L8.57812 15.75C8.8125 16.5391 9.05469 17.1172 9.78125 17.1172Z"
-              fill="#ffffff"
-              fill-opacity="1"></path>
-          </g>
-        </svg>
+        <img
+        src="/paperplane.fill.svg"
+        width="24px"
+        height="24px"
+        style="margin-top: -0.2rem; margin-bottom: -0.2rem; margin-left: -0.2rem; margin-right: -0.2rem;"
+      />
       </button>
     <!-- </form> -->
     <small>URLs must start with http:// or https://</small>
@@ -223,6 +214,11 @@ const options: ISourceOptions = {
 </Layout>
 
 <style>
+  /* #tsparticles {
+    opacity: 0;
+    transform: scale(0.5);
+  } */
+
   astro-particles,
   #tsparticles,
   #particles,
@@ -243,7 +239,7 @@ const options: ISourceOptions = {
   }
 
   #tsparticles.blurred{
-	filter: blur(8px) brightness(0.75) sepia(90%) hue-rotate(160deg);
+	filter: blur(8px) brightness(0.75) /*sepia(90%) hue-rotate(160deg)*/;
   }
 
   body {
@@ -277,19 +273,24 @@ const options: ISourceOptions = {
     border: none;
     opacity: 1;
     padding: 0.7em;
-    font-size: 16px;
+    font-size: 24px;
     margin: 3px;
   }
 
   input,
   input:focus,
   input:active {
+    font-family: ui-monospace, "SF Mono", Menlo, Monaco, "Cascadia Mono",
+      "Segoe UI Mono", "Roboto Mono", "Oxygen Mono", "Ubuntu Mono",
+      "Source Code Pro", "Fira Mono", "Droid Sans Mono", "Courier New",
+      monospace;
     background: transparent;
     font-weight: 600;
     border-radius: 0;
     border-bottom: 2px solid gray;
-    padding-right: 7em;
-	transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1)!important;
+    padding-right: -10em;
+    opacity: 0;
+	transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1)!important;
     margin-right: 0.9em;
 	color: white;
   }
