@@ -1,123 +1,335 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
+import Layout from "../layouts/Layout.astro";
+import Card from "../components/Card.astro";
+import Particles from "astro-particles";
+import type {
+  Container,
+  Engine,
+  ISourceOptions,
+  tsParticles,
+} from "tsparticles-engine";
+
+const options: ISourceOptions = {
+  particles: {
+    number: {
+      value: 80,
+      density: {
+        enable: true,
+        value_area: 600,
+      },
+    },
+    color: {
+      value: "#775566",
+    },
+    shape: {
+      type: "circle",
+      stroke: {
+        width: 0,
+        color: "#997788",
+      },
+    },
+    opacity: {
+      value: 0.3,
+      random: false,
+      anim: {
+        enable: true,
+        speed: 1,
+        opacity_min: 0.1,
+        sync: false,
+      },
+    },
+    size: {
+      value: 3,
+      random: true,
+      anim: {
+        enable: false,
+        speed: 40,
+        size_min: 0.1,
+        sync: false,
+      },
+    },
+    line_linked: {
+      enable: true,
+      distance: 150,
+      color: "#ffffff",
+      opacity: 0.3,
+      width: 1,
+    },
+    move: {
+      enable: true,
+      speed: 4,
+      direction: "none",
+      random: true,
+      straight: false,
+      out_mode: "bounce",
+      bounce: false,
+      attract: {
+        enable: true,
+        rotateX: 600,
+        rotateY: 1200,
+      },
+    },
+  },
+  interactivity: {
+    detect_on: "window",
+    events: {
+      onhover: {
+        enable: true,
+        mode: "grab",
+      },
+      onclick: {
+        enable: true,
+        mode: "repulse",
+      },
+      resize: true,
+    },
+    modes: {
+      grab: {
+        distance: 200,
+        line_linked: {
+          opacity: 1,
+        },
+      },
+      bubble: {
+        distance: 400,
+        size: 40,
+        duration: 2,
+        opacity: 8,
+        speed: 3,
+      },
+      repulse: {
+        distance: 150,
+        duration: 0.4,
+      },
+      push: {
+        particles_nb: 4,
+      },
+      remove: {
+        particles_nb: 2,
+      },
+    },
+  },
+  retina_detect: true,
+};
 ---
 
-<Layout title="Welcome to Astro.">
-	<main>
-		<svg
-			class="astro-a"
-			width="495"
-			height="623"
-			viewBox="0 0 495 623"
-			fill="none"
-			xmlns="http://www.w3.org/2000/svg"
-			aria-hidden="true"
-		>
-			<path
-				fill-rule="evenodd"
-				clip-rule="evenodd"
-				d="M167.19 364.254C83.4786 364.254 0 404.819 0 404.819C0 404.819 141.781 19.4876 142.087 18.7291C146.434 7.33701 153.027 0 162.289 0H332.441C341.703 0 348.574 7.33701 352.643 18.7291C352.92 19.5022 494.716 404.819 494.716 404.819C494.716 404.819 426.67 364.254 327.525 364.254L264.41 169.408C262.047 159.985 255.147 153.581 247.358 153.581C239.569 153.581 232.669 159.985 230.306 169.408L167.19 364.254ZM160.869 530.172C160.877 530.18 160.885 530.187 160.894 530.195L160.867 530.181C160.868 530.178 160.868 530.175 160.869 530.172ZM136.218 411.348C124.476 450.467 132.698 504.458 160.869 530.172C160.997 529.696 161.125 529.242 161.248 528.804C161.502 527.907 161.737 527.073 161.917 526.233C165.446 509.895 178.754 499.52 195.577 500.01C211.969 500.487 220.67 508.765 223.202 527.254C224.141 534.12 224.23 541.131 224.319 548.105C224.328 548.834 224.337 549.563 224.347 550.291C224.563 566.098 228.657 580.707 237.264 593.914C245.413 606.426 256.108 615.943 270.749 622.478C270.593 621.952 270.463 621.508 270.35 621.126C270.045 620.086 269.872 619.499 269.685 618.911C258.909 585.935 266.668 563.266 295.344 543.933C298.254 541.971 301.187 540.041 304.12 538.112C310.591 533.854 317.059 529.599 323.279 525.007C345.88 508.329 360.09 486.327 363.431 457.844C364.805 446.148 363.781 434.657 359.848 423.275C358.176 424.287 356.587 425.295 355.042 426.275C351.744 428.366 348.647 430.33 345.382 431.934C303.466 452.507 259.152 455.053 214.03 448.245C184.802 443.834 156.584 436.019 136.218 411.348Z"
-				fill="url(#paint0_linear_1805_24383)"></path>
-			<defs>
-				<linearGradient
-					id="paint0_linear_1805_24383"
-					x1="247.358"
-					y1="0"
-					x2="247.358"
-					y2="622.479"
-					gradientUnits="userSpaceOnUse"
-				>
-					<stop stop-opacity="0.9"></stop>
-					<stop offset="1" stop-opacity="0.2"></stop>
-				</linearGradient>
-			</defs>
-		</svg>
-		<h1>Welcome to <span class="text-gradient">Astro</span></h1>
-		<p class="instructions">
-			To get started, open the directory <code>src/pages</code> in your project.<br />
-			<strong>Code Challenge:</strong> Tweak the "Welcome to Astro" message above.
-		</p>
-		<ul role="list" class="link-card-grid">
-			<Card
-				href="https://docs.astro.build/"
-				title="Documentation"
-				body="Learn how Astro works and explore the official API docs."
-			/>
-			<Card
-				href="https://astro.build/integrations/"
-				title="Integrations"
-				body="Supercharge your project with new frameworks and libraries."
-			/>
-			<Card
-				href="https://astro.build/themes/"
-				title="Themes"
-				body="Explore a galaxy of community-built starter themes."
-			/>
-			<Card
-				href="https://astro.build/chat/"
-				title="Community"
-				body="Come say hi to our amazing Discord community. ❤️"
-			/>
-		</ul>
-	</main>
+<script>
+  import { type Container, type Engine, tsParticles } from "tsparticles-engine";
+  import { loadFull } from "tsparticles";
+
+  //old habits die hard.
+  function print(message: any) {
+    console.log(message);
+  }
+
+  // the function name is the parameter passed to the init attribute
+  // required
+  // add the function to window is mandatory, it will be searched there
+  window.particlesInit = async function (engine: Engine) {
+    await loadFull(engine);
+    // lowerParticles();
+  };
+
+  // the function name is the parameter passed to the loaded attribute
+  // optional
+  // add the function to window is mandatory, it will be searched there
+  window.particlesLoaded = function (container: Container) {
+    console.log("particlesLoaded callback");
+    // lowerParticles();
+  };
+
+//   function lowerParticles() {
+//     if (document.getElementById("tsparticles") != null) {
+//       print("lowering tsParticles");
+//       let tsparticlesElement = document.getElementById("tsparticles");
+//       let canvas = document.querySelector("#tsparticles > canvas");
+//       tsparticlesElement.style.zIndex = "-1000";
+//       canvas.style.zIndex = "-1000";
+//     } else {
+//       print("tsParticles has not loaded in yet");
+//     }
+//   }
+
+//   document.addEventListener("DOMContentLoaded", () => {
+//     lowerParticles();
+//   });
+
+//   document.getElementById("urlfield")?.addEventListener("click", () => {
+//     lowerParticles();
+//   });
+
+//   document.querySelector("#tsparticles")?.addEventListener("click", () => {
+//     lowerParticles();
+//   });
+
+  function redirect() {
+    print("trolled")
+  }
+
+   document.onreadystatechange = onReady;
+   function onReady() {
+     if (document.readyState == "complete") {
+       document.getElementById("tsparticles")?.setAttribute("data-astro-cid-j7pv25f6", "")
+     }
+   }
+  
+
+
+</script>
+
+<Layout title="Superposition">
+  <main>
+    <h1><code>Superposition</code></h1>
+    <h3>Proof-of-concept proxy using Cloudflare Workers.</h3>
+    <h5>
+      A <a href="https://bomberfish.ca">BomberFish Industries</a> project.
+    </h5>
+    <form onsubmit="
+    redirect()
+    ">
+      <input type="text" name="url" id="urlfield" placeholder="Enter a URL" onfocus="document.getElementById('tsparticles').classList.add('blurred');console.log('blurred')" onblur="document.getElementById('tsparticles').classList.remove('blurred');console.log('unblurred')" />
+      <button type="submit" id="gobutton" name="go">
+        <!-- fuck you apple i can do whatever i want with this icon and you can't do shit -->
+        <!--?xml version="1.0" encoding="UTF-8"?-->
+        <!--Generator: Apple Native CoreSVG 175.5-->
+
+        <svg
+          version="1.1"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          width="16.3672"
+          height="17.1172"
+        >
+          <g>
+            <rect height="17.1172" opacity="0" width="16.3672" x="0" y="0"
+            ></rect>
+            <path
+              d="M9.78125 17.1172C10.3438 17.1172 10.7422 16.6328 11.0312 15.8828L16.1484 2.51562C16.2891 2.15625 16.3672 1.83594 16.3672 1.57031C16.3672 1.0625 16.0547 0.75 15.5469 0.75C15.2812 0.75 14.9609 0.828125 14.6016 0.96875L1.16406 6.11719C0.507812 6.36719 0 6.76562 0 7.33594C0 8.05469 0.546875 8.29688 1.29688 8.52344L5.51562 9.80469C6.01562 9.96094 6.29688 9.94531 6.63281 9.63281L15.2031 1.625C15.3047 1.53125 15.4219 1.54688 15.5 1.61719C15.5781 1.69531 15.5859 1.8125 15.4922 1.91406L7.51562 10.5156C7.21094 10.8359 7.1875 11.1016 7.33594 11.625L8.57812 15.75C8.8125 16.5391 9.05469 17.1172 9.78125 17.1172Z"
+              fill="#ffffff"
+              fill-opacity="1"></path>
+          </g>
+        </svg>
+      </button>
+    </form>
+  </main>
+  <span id="particles">
+  <Particles
+    id="tsparticles"
+    options={options}
+    init="particlesInit"
+    style="z-index: -1000"
+  /></span>
 </Layout>
 
 <style>
-	main {
-		margin: auto;
-		padding: 1rem;
-		width: 800px;
-		max-width: calc(100% - 2rem);
-		color: white;
-		font-size: 20px;
-		line-height: 1.6;
-	}
-	.astro-a {
-		position: absolute;
-		top: -32px;
-		left: 50%;
-		transform: translatex(-50%);
-		width: 220px;
-		height: auto;
-		z-index: -1;
-	}
-	h1 {
-		font-size: 4rem;
-		font-weight: 700;
-		line-height: 1;
-		text-align: center;
-		margin-bottom: 1em;
-	}
-	.text-gradient {
-		background-image: var(--accent-gradient);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-size: 400%;
-		background-position: 0%;
-	}
-	.instructions {
-		margin-bottom: 2rem;
-		border: 1px solid rgba(var(--accent-light), 25%);
-		background: linear-gradient(rgba(var(--accent-dark), 66%), rgba(var(--accent-dark), 33%));
-		padding: 1.5rem;
-		border-radius: 8px;
-	}
-	.instructions code {
-		font-size: 0.8em;
-		font-weight: bold;
-		background: rgba(var(--accent-light), 12%);
-		color: rgb(var(--accent-light));
-		border-radius: 4px;
-		padding: 0.3em 0.4em;
-	}
-	.instructions strong {
-		color: rgb(var(--accent-light));
-	}
-	.link-card-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
-		gap: 2rem;
-		padding: 0;
-	}
+  astro-particles,
+  #tsparticles,
+  #particles,
+  #tsparticles > canvas {
+    z-index: -1000 !important;
+    backdrop-filter: brightness(0.5);
+  }
+
+  #tsparticles, #tsparticles.blurred {
+	transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1)!important;
+  }
+
+  #tsparticles.blurred{
+	filter: blur(8px) brightness(0.75) sepia(90%) hue-rotate(160deg);
+  }
+
+  body {
+	display: grid;
+	align-items: center;
+	justify-items: center;
+  }
+
+  a {
+	color: rebeccapurple!important;
+	filter: brightness(1.5)
+  }
+
+  main {
+	align-self: center;
+  	justify-self: center;
+    z-index: 1000;
+    margin: auto;
+    padding: 1rem;
+    width: 800px;
+    max-width: calc(100% - 2rem);
+    color: white;
+    font-size: 20px;
+    line-height: 1.6;
+    text-align: center;
+  }
+
+  input,
+  button {
+    appearance: none;
+    border: none;
+    opacity: 1;
+    padding: 0.7em;
+    font-size: 16px;
+    margin: 3px;
+  }
+
+  input,
+  input:focus,
+  input:active {
+    background: transparent;
+    font-weight: 600;
+    border-radius: 0;
+    border-bottom: 2px solid gray;
+    padding-right: 7em;
+	transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1)!important;
+    margin-right: 0.9em;
+	color: white;
+  }
+
+  input:focus,
+  input:active {
+    border-color: rebeccapurple;
+  }
+
+  button, button:hover {
+	transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1)!important;
+    appearance: none;
+    border: none;
+    border-radius: 0.5em;
+    width: 2.5em;
+    background: rebeccapurple;
+    height: 2.5em;
+  }
+
+  button:hover {
+	background: #7739b5;
+	box-shadow: 0px 0px 69px 18px rgba(102,51,153,1);
+-webkit-box-shadow: 0px 0px 69px 18px rgba(102,51,153,1);
+-moz-box-shadow: 0px 0px 69px 18px rgba(102,51,153,1);
+  }
+
+  #go-button > svg,
+  #go-button > svg > g,
+  #go-button > svg > g > path {
+    width: 1em;
+    height: 1em;
+    scale: 0.5 !important;
+  }
+
+  .astro-a {
+    position: absolute;
+    top: -32px;
+    left: 50%;
+    transform: translatex(-50%);
+    width: 220px;
+    height: auto;
+    /* z-index: -1; */
+  }
+  h1 {
+    font-size: 4rem;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    margin-bottom: 0.3em;
+  }
 </style>
