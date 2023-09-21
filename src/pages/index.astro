@@ -12,10 +12,10 @@ import type {
 const options: ISourceOptions = {
   particles: {
     number: {
-      value: 80,
+      value: 60,
       density: {
         enable: true,
-        value_area: 500,
+        value_area: 700,
       },
     },
     color: {
@@ -188,12 +188,13 @@ const options: ISourceOptions = {
     <h1><code>Superposition</code></h1>
     <h3>Proof-of-concept proxy using Cloudflare Workers.</h3>
     <h5 id="footer">
-      A <a href="https://bomberfish.ca">BomberFish Industries</a> project.
+      A <a href="https://bomberfish.ca">BomberFish Industries</a> project.<br>
+      <a href="https://github.com/BomberFish/Superposition">View the source code.</a>
     </h5>
     <!-- <form onsubmit="
     window.location.href = 'https:\/\/superposition.bomberfish.ca/?url='+document.getElementById('urlfield').value;
     "> -->
-      <input type="text" name="url" id="urlfield" placeholder="Enter a URL..." onfocus="document.getElementById('tsparticles').classList.add('blurred');console.log('blurred')" onblur="document.getElementById('tsparticles').classList.remove('blurred');console.log('unblurred')" />
+      <input size="20" type="text" name="url" id="urlfield" placeholder="Enter a URL..." onfocus="document.getElementById('tsparticles').classList.add('blurred');console.log('blurred')" onblur="document.getElementById('tsparticles').classList.remove('blurred');console.log('unblurred')" />
       <button id="gobutton" name="go" onclick="redirect(document.getElementById('urlfield').value);">
         <img
         src="/paperplane.fill.svg"
@@ -226,10 +227,11 @@ const options: ISourceOptions = {
     text-align: center;
     left: 50%;
     transform: translateX(-50%);
-    padding: 16px;
-    border: 1px solid rebeccapurple;
+    padding: 1em 3em;
+    font-size: 14.5px;
+    border: 1px solid var(--accent);
     background: #22113370;
-    border-radius: 2em;
+    border-radius: 100vw;
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     -moz-backdrop-filter: blur(8px);
@@ -267,12 +269,12 @@ const options: ISourceOptions = {
   }
 
   a {
-	color: rebeccapurple!important;
+	color: var(--accent)!important;
 	filter: brightness(1.5)
   }
 
   main {
-	align-self: center;
+	  align-self: center;
   	justify-self: center;
     z-index: 1000;
     margin: auto;
@@ -306,7 +308,7 @@ const options: ISourceOptions = {
     font-weight: 600;
     border-radius: 0;
     border-bottom: 2px solid gray;
-    padding-right: -10em;
+    width: 10em;
     opacity: 0;
 	transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1)!important;
     margin-right: 0.9em;
@@ -315,7 +317,7 @@ const options: ISourceOptions = {
 
   input:focus,
   input:active {
-    border-color: rebeccapurple;
+    border-color: var(--accent);
   }
 
   button, button:hover {
@@ -324,7 +326,7 @@ const options: ISourceOptions = {
     border: none;
     border-radius: 0.5em;
     width: 2.5em;
-    background: rebeccapurple;
+    background: var(--accent);
     height: 2.5em;
   }
 
